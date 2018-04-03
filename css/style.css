@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.fridge {
+  background-color: #0e67f7;
+  background-image: url("../images/fridge-energy-efficiency.jpg");
+  /* background-repeat: no-repeat; */
+  background-size: 100% 100%;
+  float: left;
+  /* margin-top: 5%;
+  margin-right: 4%; */
+  width:70%;
+  height: 100%;
+
+}
+
+select {
+  background-color: #FFFFFF;
+  margin-top: 10%;
+  margin-left: 40%;
+  width: 100px;
+  height: 30px;
+  border: 1px solid #f2f2f2;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16);
+}
+
+
+ul {
+  list-style: none;
+  margin-left: 24%;
+}
+
+li {
+  width: 199px;
+  height: 200px;
+  float: left;
+  padding-right: 25px;
+  background-image: url("../images/yellow-note.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+}
+
+button {
+  width: 134px;
+  height: 36px;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: bold;
+  background-color: #0e67f7;
+  border: none;
+  margin-top: 15px;
+  margin-left: 38%;
+}
+
+label {
+  font-family: arial, Arial, Helvetica, sans-serif;
+  color: #777;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 10pt;
+}
+
+.note-text {
+  margin-top: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+  /* margin-left: 4%;
+  margin-right: 4%; */
+  font-family: 'Covered By Your Grace', sans-serif;
+  font-size: 30px;
+}
+
+.first-row {
+  margin-top: 5%;
+}
+
+.second-row {
+  margin-top: 25%;
+}
+
+.third-row {
+  margin-top: 45%;
+}
+
+.note {
+  height: 200px;
+  width: 199px;
+}
+
+
+.form {
+  float: right;
+  margin-top: 5%;
+  margin-left: 2%;
+  height: 800px;
+  width: 28%;
+  /* border: 1px solid #f2f2f2; */
+  /* box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16); */
+}
+
+.form h1 {
+  font-family: 'Lobster', cursive;
+  color: red;
+  font-size: 70px;
+  text-align: center;
+}
+
+.text-fields {
+  border: 1px solid #f2f2f2;
+  font-size: 1.5em;
+  width: 80%;
+  max-width: 80%;
+  margin-left: 10%;
+  margin-top: 10%;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16);
+}
