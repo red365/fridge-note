@@ -4,15 +4,13 @@ function removeTextItemFromListArray(arr) {
 }
 
 function tiltNote(listItem) {
-    const tilt = Math.floor((Math.random() * 10) + 1);
+    const tiltAmount = Math.floor((Math.random() * 10) + 1);
+    const tiltLeft = amount => "rotate(" + (360 - amount) + "deg)";
+    const tiltRight = amount => `rotate(${amount}deg)`;
     
-    if ( tilt < 5 ) {
-        listItem.style.transform = "rotate("+ (360 - tilt) + "deg)"; 
-    } else {
-        listItem.style.transform = `rotate(${tilt}deg)`; 
-    }
-    return listItem;
+    listItem.style.transform = ( tiltAmount < 5 ) ? tiltLeft(tiltAmount) : tiltRight(tiltAmount);
 
+    return listItem;
 }
 
 function setNoteColor(listItem) {
