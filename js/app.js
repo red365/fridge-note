@@ -1,4 +1,4 @@
-function removeTextItemFromListArray(arr) {
+function removeFirstNodeFromListArray(arr) {
     arr.shift();
     return arr;
 }
@@ -25,13 +25,13 @@ function setNoteColor(listItem) {
 }
 
 function rearrangeNotes() {
-    const firstRowListItems = removeTextItemFromListArray(Array.from(document
+    const firstRowListItems = removeFirstNodeFromListArray(Array.from(document
         .getElementsByClassName("first-row")[0]
         .childNodes));
-    const secondRowListItems = removeTextItemFromListArray(Array.from(document
+    const secondRowListItems = removeFirstNodeFromListArray(Array.from(document
         .getElementsByClassName("second-row")[0]
         .childNodes));
-    const thirdRowListItems = removeTextItemFromListArray(Array.from(document
+    const thirdRowListItems = removeFirstNodeFromListArray(Array.from(document
         .getElementsByClassName("third-row")[0]
         .childNodes));
     const fullRow = 4;
@@ -54,27 +54,30 @@ function createNote(row, position, noteText) {
   const ul = document.getElementsByClassName(row)[0];
   let li = document.createElement("li");
   const p = document.createElement("p");
+  const i = document.createElement("i");
+
   
   li = tiltNote(li);
   li = setNoteColor(li);
   
   p.className = "note-text";
   p.innerText = noteText;
+  i.className = "fas fa-times";
   li.id = position;
   
-  li.addEventListener("click", function() {
-    const li = document.getElementById(this.id);
-    const parent = li.parentNode;
-    const rowIdentifier = parent.className;
+  i.addEventListener("click", function() {
+    const i = this;
+    const ul = this.parentElement.parentElement;
 
-    parent.removeChild(li);
+    ul.removeChild(li);
     
     rearrangeNotes();
     
     document.getElementsByTagName("label")[0].innerText = "";
   });
-  
+	
   li.appendChild(p);
+  li.insertBefore(i, li.children[0]);
   ul.appendChild(li);
 }
 

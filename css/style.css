@@ -67,8 +67,16 @@ label {
   font-size: 10pt;
 }
 
+.fa-times {
+  color: #999;
+  margin-top: 7px;
+  margin-bottom: 5px;
+  float: right;
+
+}
+
 .note-text {
-  margin-top: 10%;
+  margin-top: 5%;
   padding-left: 5%;
   padding-right: 5%;
   /* margin-left: 4%;
