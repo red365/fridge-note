@@ -50,6 +50,17 @@ function rearrangeNotes() {
     }
 }
 
+function deleteNote() {
+    const i = this;
+    const ul = this.parentElement.parentElement;
+
+    ul.removeChild(this.parentElement);
+    
+    rearrangeNotes();
+    
+    document.getElementsByTagName("label")[0].innerText = "";
+  }
+
 function createNote(row, position, noteText) {
   const ul = document.getElementsByClassName(row)[0];
   let li = document.createElement("li");
@@ -65,46 +76,38 @@ function createNote(row, position, noteText) {
   i.className = "fas fa-times";
   li.id = position;
   
-  i.addEventListener("click", function() {
-    const i = this;
-    const ul = this.parentElement.parentElement;
-
-    ul.removeChild(li);
-    
-    rearrangeNotes();
-    
-    document.getElementsByTagName("label")[0].innerText = "";
-  });
+  i.addEventListener( "click", deleteNote );
 	
   li.appendChild(p);
   li.insertBefore(i, li.children[0]);
   ul.appendChild(li);
 }
 
+function noteHandler() {
+    const textArea = document.getElementsByClassName("text-fields")[0];
+    const listItemArray = document.getElementsByTagName("li");
+    const label = document.getElementsByTagName("label")[0];
+    const fullRow = 4;
+    const noteCharLimit = 45; 
+  
+    if ( textArea.value.length > noteCharLimit ) {
+      label.innerText = "Text exceeding 45 characters will be truncated";
+      textArea.value = textArea.value.substr(0, noteCharLimit) + "...";
+    }
+  
+    if ( listItemArray.length < fullRow ) {
+        createNote( "first-row", listItemArray.length, textArea.value );
+    } else if ( listItemArray.length >= fullRow && listItemArray.length <= (( fullRow * 2 ) -1 ) ) {
+        createNote( "second-row", listItemArray.length, textArea.value );
+    } else if (listItemArray.length >= ( fullRow * 2 ) && listItemArray.length <= (( fullRow * 3 ) -1 )  ) {
+        createNote("third-row", listItemArray.length, textArea.value);
+    } else {
+        label.innerText = "No room on the fridge! Click some notes to delete them and try again";
+    }
+    
+    textArea.value = "";
+   }
+
 const createButton = document.getElementsByTagName("button")[0];
 
-createButton.addEventListener("click", function () {
-  const textArea = document.getElementsByClassName("text-fields")[0];
-  const listItemArray = document.getElementsByTagName("li");
-  const label = document.getElementsByTagName("label")[0];
-  const fullRow = 4;
-  const noteCharLimit = 45; 
-
-  if ( textArea.value.length > noteCharLimit ) {
-    label.innerText = "Text exceeding 45 characters will be truncated";
-    textArea.value = textArea.value.substr(0, noteCharLimit) + "...";
-  }
-
-  if ( listItemArray.length < fullRow ) {
-      createNote( "first-row", listItemArray.length, textArea.value );
-  } else if ( listItemArray.length >= fullRow && listItemArray.length <= (( fullRow * 2 ) -1 ) ) {
-      createNote( "second-row", listItemArray.length, textArea.value );
-  } else if (listItemArray.length >= ( fullRow * 2 ) && listItemArray.length <= (( fullRow * 3 ) -1 )  ) {
-      createNote("third-row", listItemArray.length, textArea.value);
-  } else {
-      label.innerText = "No room on the fridge! Click some notes to delete them and try again";
-  }
-  
-  textArea.value = "";
-
- });
+createButton.addEventListener("click", noteHandler );
