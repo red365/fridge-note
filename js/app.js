@@ -24,7 +24,7 @@ function setNoteColor(listItem) {
     return listItem;
 }
 
-function rearrangeNotes() {
+function rearrangeNotes() {    
     const firstRowListItems = removeFirstNodeFromListArray(Array.from(document
         .getElementsByClassName("first-row")[0]
         .childNodes));
@@ -37,8 +37,7 @@ function rearrangeNotes() {
     const fullRow = 4;
     const emptyRow = 0;
     
-    if ( firstRowListItems.length < fullRow && secondRowListItems.length > emptyRow ) {
-    
+    if ( firstRowListItems.length < fullRow && secondRowListItems.length > emptyRow ) {  
         document.getElementsByClassName("first-row")[0].appendChild(secondRowListItems.shift());
         rearrangeNotes();    
     }
@@ -52,11 +51,17 @@ function rearrangeNotes() {
 
 function deleteNote() {
     const i = this;
+    const li = this.parentElement;
     const ul = this.parentElement.parentElement;
 
-    ul.removeChild(this.parentElement);
-    
-    rearrangeNotes();
+    i.className += " fade-out";
+    li.getElementsByTagName("p")[0].className += " fade-out";
+    li.className += "fade-out";
+
+    setTimeout( function(){ 
+        ul.removeChild(li);
+        rearrangeNotes();
+    }, 1000);
     
     document.getElementsByTagName("label")[0].innerText = "";
   }

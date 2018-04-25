@@ -20,6 +20,17 @@ html, body {
 
 }
 
+.fade-out {
+  animation-name: fade-out;
+  animation-duration: 1s;
+  opacity: 0;
+}
+
+@keyframes fade-out {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
 select {
   background-color: #FFFFFF;
   margin-top: 10%;
